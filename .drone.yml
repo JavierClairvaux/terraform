@@ -10,7 +10,6 @@ steps:
         from_secret: GITHUB_TOKEN
   - name: send telegram notification
     image: appleboy/drone-telegram
-    secrets: [ telegram_token, telegram_to ]
     when:
       status: [ success, failure ]
     settings:
@@ -50,3 +49,4 @@ trigger:
   - drone-testing
   event:
   - pull_request
+  - push
