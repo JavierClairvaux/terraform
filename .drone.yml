@@ -3,7 +3,7 @@ type: docker
 name: test
 
 steps:
-  - name: test
+  - name: test1
     image: leofigy/nanobell:latest
     environment:
       GITHUB_TOKEN:
