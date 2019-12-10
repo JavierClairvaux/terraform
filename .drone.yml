@@ -11,7 +11,7 @@ steps:
   - name: test1
     image: ubuntu
     commands:
-      - echo -e '{{#success build.status}}\n Build #{{build.number}} of `{{repo.name}}` succeeded.\n📝 Commit by {{commit.author}} on `{{commit.branch}}`:\n```\n{{commit.message}}\n```\n{{ build.link }}\n{{else}}\n Build #{{build.number}} of `{{repo.name}}` failed.\n\n Commit by {{commit.author}} on `{{commit.branch}}`:\n```\n{{commit.message}}\n```\n\n{{ build.link }}\n{{/success}}'| tee bellator_message.tpl
+      - echo -e '{{#success build.status}}\n Build #{{build.number}} of '| tee bellator_message.tpl
       - cat /bellator_message.tpl
   # - name: send telegram notification
   #   image: appleboy/drone-telegram
