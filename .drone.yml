@@ -22,8 +22,6 @@ steps:
       to:
         from_secret: telegram_to
       message_file: bellator_message/bellator_message.tpl
-    volumes:
-      - /bellator_message:/bellator_message
 
 trigger:
   branch:
