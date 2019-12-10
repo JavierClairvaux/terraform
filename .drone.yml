@@ -2,7 +2,7 @@ kind: pipeline
 type: docker
 name: test
 
-# steps:
+steps:
 #   - name: test1
 #     image: leofigy/nanobell:latest
 #     environment:
