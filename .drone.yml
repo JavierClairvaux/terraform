@@ -11,7 +11,7 @@ steps:
   - name: test1
     image: debian:stable-slim
     commands:
-      - echo '  {{#success build.status}}
+      - echo "  {{#success build.status}}
         😂 Build #{{build.number}} of `{{repo.name}}` succeeded.
 
 
@@ -35,7 +35,7 @@ steps:
 
 
         🌐 {{ build.link }}
-        {{/success}}' | tee /bellator_message/bellator_message.tpl
+        {{/success}}"| tee /bellator_message/bellator_message.tpl
     volumes:
       - /bellator_message:/bellator_message
   - name: send telegram notification
