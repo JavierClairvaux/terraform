@@ -12,6 +12,9 @@ steps:
     image: ubuntu
     commands:
       - echo hello | tee bellator_message.tpl
+  - name: test2
+    image: ubuntu
+    commands:
       - cat bellator_message.tpl
   # - name: send telegram notification
   #   image: appleboy/drone-telegram
