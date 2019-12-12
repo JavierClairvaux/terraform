@@ -8,10 +8,8 @@ steps:
     environment:
       GITHUB_TOKEN:
         from_secret: GITHUB_TOKEN
-  # - name: test1
-  #   image: ubuntu
-  #   commands:
-  #     - echo hello | tee bellator_message.tpl
+    depends_on:
+      - grpc_server
   - name: send telegram notification
     image: appleboy/drone-telegram
     when:
@@ -22,6 +20,10 @@ steps:
       to:
         from_secret: telegram_to
       message_file: bellator_message.tpl
+
+services:
+  - name: grpc_server
+    image: javier1/grpc_server:latest
 
 trigger:
   branch:
