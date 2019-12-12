@@ -3,15 +3,15 @@ type: docker
 name: test
 
 steps:
-#   - name: test1
-#     image: leofigy/nanobell:latest
-#     environment:
-#       GITHUB_TOKEN:
-#         from_secret: GITHUB_TOKEN
   - name: test1
-    image: ubuntu
-    commands:
-      - echo hello | tee bellator_message.tpl
+    image: leofigy/nanobell:latest
+    environment:
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
+  # - name: test1
+  #   image: ubuntu
+  #   commands:
+  #     - echo hello | tee bellator_message.tpl
   - name: send telegram notification
     image: appleboy/drone-telegram
     when:
