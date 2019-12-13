@@ -6,27 +6,33 @@ name: test
 steps:
   - name: grpc_server
     image: javier1/grpc_server:latest
-    detach: true
+  #   detach: true
+  # - name: test1
+  #   image: leofigy/nanobell:latest
+  #   environment:
+  #     GITHUB_TOKEN:
+  #       from_secret: GITHUB_TOKEN
+  #     BELLATOR_SERVER: grpc_server:50051
+  #   depends_on:
+  #     - grpc_server
   - name: test1
-    image: leofigy/nanobell:latest
-    environment:
-      GITHUB_TOKEN:
-        from_secret: GITHUB_TOKEN
-      BELLATOR_SERVER: grpc_server:50051
+    image: ubuntu
+    commands:
+      - nc -zv grpc_server 50051
     depends_on:
       - grpc_server
-  - name: send telegram notification
-    image: appleboy/drone-telegram
-    when:
-      status: [ success, failure ]
-    settings:
-      token:
-        from_secret: telegram_token
-      to:
-        from_secret: telegram_to
-      message_file: bellator_message.tpl
-    depends_on:
-      - test1
+  # - name: send telegram notification
+  #   image: appleboy/drone-telegram
+  #   when:
+  #     status: [ success, failure ]
+  #   settings:
+  #     token:
+  #       from_secret: telegram_token
+  #     to:
+  #       from_secret: telegram_to
+  #     message_file: bellator_message.tpl
+  #   depends_on:
+  #     - test1
 
 trigger:
   branch:
