@@ -4,12 +4,16 @@ type: docker
 name: test
 
 steps:
+  - name: grpc_server
+    image: javier1/grpc_server:latest
+    ports: [ 50051 ]
   - name: test1
     image: leofigy/nanobell:latest
     environment:
       GITHUB_TOKEN:
         from_secret: GITHUB_TOKEN
       BELLATOR_SERVER: grpc_server:50051
+    depends_on: grpc_server
   - name: send telegram notification
     image: appleboy/drone-telegram
     when:
@@ -20,11 +24,6 @@ steps:
       to:
         from_secret: telegram_to
       message_file: bellator_message.tpl
-
-services:
-  - name: grpc_server
-    image: javier1/grpc_server:latest
-    ports: [ 50051 ]
 
 trigger:
   branch:
