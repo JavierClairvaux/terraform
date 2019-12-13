@@ -7,6 +7,7 @@ steps:
   - name: grpc_server
     image: javier1/grpc_server:latest
     ports: [ 50051 ]
+    detach: true
   - name: test1
     image: leofigy/nanobell:latest
     environment:
@@ -25,6 +26,8 @@ steps:
       to:
         from_secret: telegram_to
       message_file: bellator_message.tpl
+    depends_on:
+      - test1
 
 trigger:
   branch:
