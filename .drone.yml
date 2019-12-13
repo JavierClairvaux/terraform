@@ -8,8 +8,6 @@ steps:
     environment:
       GITHUB_TOKEN:
         from_secret: GITHUB_TOKEN
-    # depends_on:
-    #   - grpc_server
   - name: send telegram notification
     image: appleboy/drone-telegram
     when:
