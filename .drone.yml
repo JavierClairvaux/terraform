@@ -36,7 +36,7 @@ steps:
 services:
   - name: grpc_server
     image: javier1/grpc_server:latest
-
+    ports: [ 50051 ]
 trigger:
   branch:
   - master
