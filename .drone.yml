@@ -30,3 +30,4 @@ trigger:
   - drone-testing
   event:
   - pull_request
+  - push
