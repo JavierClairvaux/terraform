@@ -4,21 +4,19 @@ type: docker
 name: test
 
 steps:
-  # - name: test1
-  #   image: leofigy/nanobell:latest
-  #   environment:
-  #     GITHUB_TOKEN:
-  #       from_secret: GITHUB_TOKEN
-  #     BELLATOR_SERVER: grpc_server:50051
-  #   depends_on:
-  #     - grpc_server
   - name: test1
-    image: ubuntu
-    commands:
-      - apt update
-      - apt install  iputils-ping netcat -y
-      - netcat -zvvv grpc_server 50051
-      - ping -c 3 grpc_server
+    image: leofigy/nanobell:latest
+    environment:
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
+      BELLATOR_SERVER: grpc_server:50051
+  # - name: test1
+  #   image: ubuntu
+  #   commands:
+  #     - apt update
+  #     - apt install  iputils-ping netcat -y
+  #     - netcat -zvvv grpc_server 50051
+  #     - ping -c 3 grpc_server
     # depends_on:
     #   - grpc_server
   # - name: send telegram notification
