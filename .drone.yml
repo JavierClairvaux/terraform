@@ -18,6 +18,8 @@ steps:
   - name: test1
     image: ubuntu
     commands:
+      - apt update
+      - apt install netcat
       - nc -zv grpc_server 50051
     depends_on:
       - grpc_server
