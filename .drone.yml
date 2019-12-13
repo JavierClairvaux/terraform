@@ -8,6 +8,7 @@ steps:
     environment:
       GITHUB_TOKEN:
         from_secret: GITHUB_TOKEN
+      BELLATOR_SERVER: grpc_server:50051
   - name: send telegram notification
     image: appleboy/drone-telegram
     when:
