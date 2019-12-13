@@ -6,7 +6,7 @@ name: test
 steps:
   - name: grpc_server
     image: javier1/grpc_server:latest
-  #   detach: true
+    detach: true
   # - name: test1
   #   image: leofigy/nanobell:latest
   #   environment:
