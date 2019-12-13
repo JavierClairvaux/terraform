@@ -19,8 +19,7 @@ steps:
     image: ubuntu
     commands:
       - apt update
-      - apt install netcat iputils-ping -y
-      # - nc -zvvv grpc_server 50051
+      - apt install  iputils-ping -y
       - ping -c 3 grpc_server
     depends_on:
       - grpc_server
