@@ -20,7 +20,7 @@ steps:
     commands:
       - apt update
       - apt install netcat -y
-      - nc -zv grpc_server 50051
+      - nc -zvvv grpc_server 50051
     depends_on:
       - grpc_server
   # - name: send telegram notification
