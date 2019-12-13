@@ -9,7 +9,7 @@ steps:
     environment:
       GITHUB_TOKEN:
         from_secret: GITHUB_TOKEN
-      BELLATOR_SERVER: grpc_server:50051
+      BELLATOR_SERVER: grpc_server
   # - name: test1
   #   image: ubuntu
   #   commands:
