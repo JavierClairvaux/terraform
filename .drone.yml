@@ -10,9 +10,9 @@ steps:
       GITHUB_TOKEN:
         from_secret: GITHUB_TOKEN
       BELLATOR_SERVER: grpc_server:50051
-    commands:
-      - sleep 5
-      - ./nanobell
+    # commands:
+    #   - sleep 5
+    #   - ./nanobell
   # - name: test1
   #   image: ubuntu
   #   commands:
