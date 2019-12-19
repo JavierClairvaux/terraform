@@ -5,11 +5,12 @@ name: test
 
 steps:
   - name: test1
-    image: leofigy/nanobell:latest
+    image: leofigy/nanobell:rest
     environment:
       GITHUB_TOKEN:
         from_secret: GITHUB_TOKEN
-      BELLATOR_SERVER: grpc_server:50051
+      BELLATOR_SERVER:
+        from_secret: BELLATOR_SERVER
     # commands:
     #   - sleep 5
     #   - ./nanobell
@@ -34,10 +35,10 @@ steps:
   #     message_file: bellator_message.tpl
   #   depends_on:
   #     - test1
-services:
-  - name: grpc_server
-    image: javier1/grpc_server:latest
-    ports: [ 50051 ]
+# services:
+#   - name: grpc_server
+#     image: javier1/grpc_server:latest
+#     ports: [ 50051 ]
 trigger:
   branch:
   - master
