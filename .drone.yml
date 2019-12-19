@@ -11,34 +11,18 @@ steps:
         from_secret: GITHUB_TOKEN
       BELLATOR_SERVER:
         from_secret: BELLATOR_SERVER
-    # commands:
-    #   - sleep 5
-    #   - ./nanobell
-  # - name: test1
-  #   image: ubuntu
-  #   commands:
-  #     - apt update
-  #     - apt install  iputils-ping netcat -y
-  #     - netcat -zvvv grpc_server 50051
-  #     - ping -c 3 grpc_server
-    # depends_on:
-    #   - grpc_server
-  # - name: send telegram notification
-  #   image: appleboy/drone-telegram
-  #   when:
-  #     status: [ success, failure ]
-  #   settings:
-  #     token:
-  #       from_secret: telegram_token
-  #     to:
-  #       from_secret: telegram_to
-  #     message_file: bellator_message.tpl
-  #   depends_on:
-  #     - test1
-# services:
-#   - name: grpc_server
-#     image: javier1/grpc_server:latest
-#     ports: [ 50051 ]
+  - name: send telegram notification
+    image: appleboy/drone-telegram
+    when:
+      status: [ success, failure ]
+    settings:
+      token:
+        from_secret: telegram_token
+      to:
+        from_secret: telegram_to
+      message_file: bellator_message.tpl
+    depends_on:
+      - test1
 trigger:
   branch:
   - master
